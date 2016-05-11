@@ -1,22 +1,23 @@
----
 language: node_js
 node_js:
-  - "4"
-
+- '4'
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
-
+- npm config set spin false
+- npm install -g bower
+- npm install phantomjs-prebuilt
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZQxM4O+nnviQn9Mf5dhCN7wcBXYqb2bLiKp3y8WTjkyFcI2wndeRgYR2rz8TvmPT+yUgAiase6lvzF9LWVi05UqHF7NpbybMZXpHYAmdb7gJxxCrUnJ4nhkagVyTJqR45X4RPdpmDjYLkBbhyMy+/Wu6xDliz6BleszrZbkgSHq0iSad5KNp1Vh5bGvyhtG7ouENzuEhTkHrwlQ43OCN9iWKRFPHspUNMVhKwrDqnj+Y7X8p0P0sdHayI47Ucg2Is5cS/081fQDMV7JtthPrgujNziDa3qdJ2NBrvfHgT3rgWAEDbrT6nBxp+ooCFlxiXpFgGFV6YkKUY7djIRoug6CsyytBAzorUuAu48ogqOqI45clfCLHzQ8isb5EGKqMOstmSCBkhCkAD/PPVEOEbwZmaknvwK7cGzYhoHyEWOhZ7c79YE+EDv5IIQgqzZU4AJU7joBDv4zCkDZA/q5ag5vUoLFkbAmjG9iZn8q9WahFiuULcDlUYrDn9AG7Q3pgVy+mSSn6qjj8GixAsX79jwY/N5uFYukB2NiB7EXmNDqdRDCX+oDP0jdtvTTtzT+KJl7sjzivq8dohnCAUzBp4vnOBdgmcqnkptDY0PmjMSMrtcpNNiLEfmG6oKdgcnUuADZR/bgSOt6Mbo8Ee09ppJa83l/imosg3SwxLG8vGmA=
+  app: pure-tundra-87505
+  on:
+    repo: tragiclifestories/peepchat-ui
