@@ -1,9 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  flashMessages: Ember.inject.service(),
+
   actions: {
     doRegister() {
-      console.log(this.get('model'));
+      this.get('currentModel').save()
+        .then(() => {
+          this.transitionTo('auth.login');
+
+          this.get('flashMessages').success('Sign in, bastard');
+        })
+        .catch(({ errors }) => {
+          this.get('flashMessages')
+            .danger(errors.mapBy('detail').join(', '));
+        });
     }
   },
   model() {
